@@ -1,2 +1,12 @@
 ---
 # tasks file for packer(On Debian family)
+# Since Ansible 2.0, 'src' parameter of 'unarchive' module accepts external URL(ex. http://example.com/file.zip).
+# But this role doesn't use this feature because zip file is always downloaded even if same file already exits in local.
+# http://docs.ansible.com/ansible/unarchive_module.html
+- name: Download Packer Archive
+  get_url: url="{{ packer_download_url }}" checksum="sha256:{{ packer_sha256 }}" dest="{{ packer_download_tmppath }}"
+  register: dl_result
+- name: Unarchive Packer
+  unarchive: src="{{ packer_download_tmppath }}" dest="{{ packer_binpath }}" copy=no
+  become: yes
+  when: dl_result.changed
