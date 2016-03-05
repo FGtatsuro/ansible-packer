@@ -22,7 +22,7 @@ The variables we can use in this role.
 - packer_download_url: default="https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_linux_amd64.zip"
 - packer_sha256: default="4119d711855e8b85edb37f2299311f08c215fca884d3e941433f85081387e17c"
 - packer_download_tmppath: default="/tmp/packer.zip"
-- packer_binpath: default="/usr/local/bin"
+- packer_bin_dir: default="/usr/local/bin"
 
 If you want to overwrite values, please check https://www.packer.io/downloads.html.
 
