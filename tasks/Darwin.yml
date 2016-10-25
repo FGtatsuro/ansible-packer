@@ -1,4 +1,6 @@
 ---
 # tasks file for packer(On OSX)
-- name: Install Packer with Homebrew Cask
-  homebrew_cask: name=packer
+- name: Install Packer with Homebrew
+  homebrew:
+    name: 'packer'
+    update_homebrew: yes
